@@ -1,8 +1,9 @@
 
 class AppRoute{
-  static const splash = '/splash';
+  static const login = '/login';
   static const home = '/home';
-  static const details = '/details';
-  static const important = '/important';
+  static const chat = '/chat';
+  static const register = '/register';
+  static const profile = '/profile';
 
 }
