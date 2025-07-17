@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:ringoo/features/log_in/view/LoginScreen.dart';
 import 'package:ringoo/features/profile/view/ProfileScreen.dart';
 import 'package:ringoo/features/register/view/RegisterScreen.dart';
@@ -23,8 +22,11 @@ class RouteGenerator {
       case AppRoute.profile:
         return MaterialPageRoute(builder: (context) => ProfileScreen());
       default:
-        SystemNavigator.pop();
-        return null;
+        return MaterialPageRoute(
+            builder: (_) => Scaffold(
+              body: Center(child: Text('Page not found')),
+           )
+        );
     }
   }
 }
