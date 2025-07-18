@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ringoo/features/message/FriendModel.dart';
 
+import '../../component/SearchBar.dart';
 import 'GroupCard.dart';
 
 class GroupsScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class GroupsScreen extends StatefulWidget {
 }
 
 class _GroupsScreenState extends State<GroupsScreen> {
+  String searchText = '';
   @override
   void initState() {
     super.initState();
@@ -27,14 +29,12 @@ class _GroupsScreenState extends State<GroupsScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add,color: Colors.white,),backgroundColor: Colors.deepOrange,),
-      appBar: AppBar(
-        shadowColor: Colors.transparent,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Text("Hamada Screen"),
-        centerTitle: true,
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.search)),
-      ),
+      appBar: CustomSearchAppBar(
+      title: "Hamada Screen",
+      onSearchChanged: (text) {
+        setState(() => searchText = text);
+      },
+    ),
       body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left:16,right: 16,top: 8),

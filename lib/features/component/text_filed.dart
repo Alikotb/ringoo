@@ -6,6 +6,7 @@ class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String label;
   final Function(String) onChanged;
+  final bool isPhone;
 
   const CustomTextField({
     super.key,
@@ -13,6 +14,7 @@ class CustomTextField extends StatefulWidget {
     required this.icon,
     required this.label,
     required this.onChanged,
+    this.isPhone = false
   });
 
   @override
@@ -24,7 +26,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      keyboardType: TextInputType.text,
+      keyboardType:
+      (widget.isPhone == true)
+          ? TextInputType.number
+          : TextInputType.text,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

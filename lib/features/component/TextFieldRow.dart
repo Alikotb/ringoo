@@ -12,6 +12,7 @@ class TextFiledRow extends StatefulWidget {
   final double fontSize;
   final FontWeight fontWeight;
   final double gap;
+  final bool isPhone;
 
   const TextFiledRow({
     super.key,
@@ -24,6 +25,7 @@ class TextFiledRow extends StatefulWidget {
     required this.fontSize,
     required this.fontWeight,
     this.gap = 0.025,
+    this.isPhone=false,
   });
 
   @override
@@ -48,6 +50,7 @@ class _TextFiledRowState extends State<TextFiledRow> {
         ),
         SizedBox(height: (screenHeight * widget.gap)),
         CustomTextField(
+          isPhone: widget.isPhone,
           hintText: widget.hintText,
           icon: widget.icon,
           label: widget.label,

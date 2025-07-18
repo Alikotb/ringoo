@@ -74,8 +74,8 @@ class _FriendCardState extends State<FriendCard> {
                   visible: widget.obj.numUnreadedMsg > 0,
                   child: ClipOval(
                     child: Container(
-                      height: 30,
-                      width: 30,
+                      height: 24,
+                      width: 24,
                       color: Colors.deepOrange,
                       child: Center(
                         child: CustomText(
