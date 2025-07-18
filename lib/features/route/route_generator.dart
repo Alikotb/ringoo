@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ringoo/features/log_in/view/LoginScreen.dart';
-import 'package:ringoo/features/profile/view/ProfileScreen.dart';
+import 'package:ringoo/features/profile/view/GroupsScreen.dart';
 import 'package:ringoo/features/register/view/RegisterScreen.dart';
 
 import '../chat/view/ChatScreen.dart';
@@ -20,7 +20,7 @@ class RouteGenerator {
       case AppRoute.chat:
         return MaterialPageRoute(builder: (context) => ChatScreen());
       case AppRoute.profile:
-        return MaterialPageRoute(builder: (context) => ProfileScreen());
+        return MaterialPageRoute(builder: (context) => GroupsScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
