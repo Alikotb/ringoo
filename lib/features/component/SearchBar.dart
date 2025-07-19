@@ -47,29 +47,43 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
       backgroundColor: widget.backgroundColor,
       elevation: 0,
       centerTitle: true,
-      leading: isSearching
-          ? IconButton(
-        icon: const Icon(Icons.close, color: Colors.black),
-        onPressed: _stopSearch,
-      )
-          : IconButton(
-        icon: const Icon(Icons.search, color: Colors.black),
-        onPressed: _startSearch,
-      ),
-      title: isSearching
-          ? TextField(
-        controller: _controller,
-        autofocus: true,
-        cursorColor: Colors.deepOrange,
-        style: const TextStyle(color: Colors.black, fontSize: 18),
-        decoration: InputDecoration(
-          hintText: widget.searchHint,
-          border: InputBorder.none,
-          hintStyle: const TextStyle(color: Colors.black38),
-        ),
-        onChanged: widget.onSearchChanged,
-      )
-          : Text(widget.title, style: const TextStyle(color: Colors.black)),
+      leading:
+          isSearching
+              ? IconButton(
+                icon: Icon(
+                  Icons.close,
+                  color: Theme.of(context).colorScheme.scrim,
+                ),
+                onPressed: _stopSearch,
+              )
+              : IconButton(
+                icon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).colorScheme.scrim,
+                ),
+                onPressed: _startSearch,
+              ),
+      title:
+          isSearching
+              ? TextField(
+                controller: _controller,
+                autofocus: true,
+                cursorColor: Theme.of(context).colorScheme.primary,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.scrim,
+                  fontSize: 18,
+                ),
+                decoration: InputDecoration(
+                  hintText: widget.searchHint,
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(color: Colors.grey),
+                ),
+                onChanged: widget.onSearchChanged,
+              )
+              : Text(
+                widget.title,
+                style: TextStyle(color: Theme.of(context).colorScheme.scrim),
+              ),
       actions: isSearching ? [] : widget.actions,
     );
   }

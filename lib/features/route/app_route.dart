@@ -4,6 +4,6 @@ class AppRoute{
   static const home = '/home';
   static const chat = '/chat';
   static const register = '/register';
-  static const profile = '/profile';
+  static const profile = '/groups';
 
 }

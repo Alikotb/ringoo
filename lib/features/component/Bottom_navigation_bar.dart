@@ -15,15 +15,16 @@ class CurvedBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
-      color: Colors.orange,
+      color: Theme.of(context).colorScheme.onPrimary,
       backgroundColor: Colors.transparent,
+      buttonBackgroundColor:Theme.of(context).colorScheme.onPrimary ,
       height: 60,
       index: currentIndex,
-      items: const [
-        Icon(Icons.message_outlined, size: 30,color: Colors.white),
-        Icon(Icons.call_outlined, size: 30,color: Colors.white),
-        Icon(Icons.group_add_outlined, size: 30,color: Colors.white),
-        Icon(Icons.settings_outlined, size: 30,color: Colors.white),
+      items:  [
+        Icon(Icons.message_outlined, size: 30,color:Theme.of(context).colorScheme.primary ),
+        Icon(Icons.call_outlined, size: 30,color: Theme.of(context).colorScheme.primary),
+        Icon(Icons.group_add_outlined, size: 30,color:Theme.of(context).colorScheme.primary),
+        Icon(Icons.settings_outlined, size: 30,color: Theme.of(context).colorScheme.primary),
       ],
       onTap: onTap,
     );

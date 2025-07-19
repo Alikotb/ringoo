@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:ringoo/features/log_in/view/LoginScreen.dart';
-import 'package:ringoo/features/profile/view/GroupsScreen.dart';
 import 'package:ringoo/features/register/view/RegisterScreen.dart';
 
 import '../chat/view/ChatScreen.dart';
+import '../groups/view/GroupsScreen.dart';
 import '../home/view/HomeScreen.dart';
 import 'app_route.dart';
 

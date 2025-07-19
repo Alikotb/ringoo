@@ -25,7 +25,7 @@ class TextFiledRow extends StatefulWidget {
     required this.fontSize,
     required this.fontWeight,
     this.gap = 0.025,
-    this.isPhone=false,
+    this.isPhone = false,
   });
 
   @override
@@ -35,7 +35,6 @@ class TextFiledRow extends StatefulWidget {
 class _TextFiledRowState extends State<TextFiledRow> {
   @override
   Widget build(BuildContext context) {
-
     final mediaQuery = MediaQuery.of(context);
     final screenHeight = mediaQuery.size.height;
     return Column(

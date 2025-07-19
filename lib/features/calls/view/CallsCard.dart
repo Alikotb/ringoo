@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:ringoo/features/calls/CallsModel.dart';
 import 'package:ringoo/features/component/text.dart';
 
-
 class CallsCard extends StatefulWidget {
   final CallsModel obj;
+
   const CallsCard({super.key, required this.obj});
 
   @override
@@ -24,11 +23,8 @@ class _CallsCardState extends State<CallsCard> {
             child: Container(
               height: 56,
               width: 56,
-              color: Colors.deepOrange,
-              child: Image.asset(
-                widget.obj.image,
-                fit: BoxFit.fill,
-              ),
+              color: Theme.of(context).colorScheme.primary,
+              child: Image.asset(widget.obj.image, fit: BoxFit.fill),
             ),
           ),
           const SizedBox(width: 12),
@@ -38,7 +34,7 @@ class _CallsCardState extends State<CallsCard> {
               children: [
                 CustomText(
                   text: widget.obj.name,
-                  color: Colors.black,
+                  color: Theme.of(context).colorScheme.scrim,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
@@ -46,7 +42,9 @@ class _CallsCardState extends State<CallsCard> {
                 Row(
                   children: [
                     Icon(
-                      widget.obj.type ? Icons.phone_callback_outlined : Icons.phone_forwarded_rounded,
+                      widget.obj.type
+                          ? Icons.phone_callback_outlined
+                          : Icons.phone_forwarded_rounded,
                       color: widget.obj.type ? Colors.green : Colors.red,
                     ),
                     SizedBox(width: 4),
@@ -55,7 +53,7 @@ class _CallsCardState extends State<CallsCard> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Colors.black38,
+                        color: Colors.grey,
                         fontSize: 16,
                         fontWeight: FontWeight.normal,
                       ),
@@ -67,10 +65,15 @@ class _CallsCardState extends State<CallsCard> {
           ),
 
           const SizedBox(width: 8),
-          IconButton(onPressed: (){},  icon: Icon(Icons.phone_in_talk_outlined))
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.phone_in_talk_outlined,
+              color: Theme.of(context).colorScheme.scrim,
+            ),
+          ),
         ],
       ),
     );
   }
 }
-

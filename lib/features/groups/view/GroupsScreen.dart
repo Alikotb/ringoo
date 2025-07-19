@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ringoo/features/message/FriendModel.dart';
 
 import '../../component/SearchBar.dart';
-import '../CallsModel.dart';
-import 'CallsCard.dart';
+import 'GroupCard.dart';
 
-class CallsScreen extends StatefulWidget {
-  const CallsScreen({super.key});
+class GroupsScreen extends StatefulWidget {
+  const GroupsScreen({super.key});
 
   @override
-  State<CallsScreen> createState() => _CallsScreenState();
+  State<GroupsScreen> createState() => _GroupsScreenState();
 }
 
-class _CallsScreenState extends State<CallsScreen> {
-  String searchText = "";
+class _GroupsScreenState extends State<GroupsScreen> {
+  String searchText = '';
 
   @override
   void initState() {
@@ -30,6 +30,11 @@ class _CallsScreenState extends State<CallsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        child: Icon(Icons.add, color: Colors.white),
+      ),
       appBar: CustomSearchAppBar(
         backgroundColor: Theme.of(context).colorScheme.surface,
         title: "Hamada Screen",
@@ -41,7 +46,7 @@ class _CallsScreenState extends State<CallsScreen> {
         child: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
           child: Column(
-            children: calls.map((obj) => CallsCard(obj: obj)).toList(),
+            children: groups.map((obj) => GroupCard(obj: obj)).toList(),
           ),
         ),
       ),
