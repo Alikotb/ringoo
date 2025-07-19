@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ringoo/features/register/view_model/RegisterViewModel.dart';
 
 import '../../component/TextFieldRow.dart';
 import '../../component/outline_button.dart';
@@ -7,13 +8,38 @@ import '../../component/text_filed.dart';
 import '../../route/app_route.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
 
+  final RegisterViewModel viewModel = RegisterViewModel();
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  String email = "";
+  String password = "";
+  String confirmPassword = "";
+  String phone = "";
+  String name = "";
+
+  @override
+  void initState() {
+    super.initState();
+    widget.viewModel.stream.listen((event) {
+      if (event == "Success") {
+        Navigator.pushReplacementNamed(context, AppRoute.login);
+      }
+    }, onError: (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(error.toString()),
+          backgroundColor: Colors.red,
+        ),
+      );
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -81,7 +107,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: "user name",
                     icon: Icons.person,
                     label: "Enter name",
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      name = value;
+                    },
                     text: "Username",
                     color: Theme.of(context).colorScheme.scrim,
                     fontSize: 18,
@@ -99,7 +127,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: "ali@gmail.com",
                     icon: Icons.email_outlined,
                     label: "Enter Email",
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      email = value;
+                    },
                     text: "Email",
                     color: Theme.of(context).colorScheme.scrim,
                     fontSize: 18,
@@ -118,7 +148,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: "01*********",
                     icon: Icons.phone_android_outlined,
                     label: "Enter Phone",
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      phone = value;
+                    },
                     text: "Phone Number",
                     color: Theme.of(context).colorScheme.scrim,
                     fontSize: 18,
@@ -144,7 +176,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
-                  child: CustomPasswordTextField(onChanged: (value) {}),
+                  child: CustomPasswordTextField(onChanged: (value) {
+                    password = value;
+                  }),
                 ),
               ),
               SizedBox(height: (screenHeight * 0.03)),
@@ -167,7 +201,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04),
                   child: CustomPasswordTextField(
                     hint: "Confirm Password",
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      confirmPassword = value;
+                    },
                   ),
                 ),
               ),
@@ -182,7 +218,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     textColor: Colors.white,
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoute.login);
+                      widget.viewModel.inputValidation(email, password, confirmPassword, phone, name);
                     },
                   ),
                 ),
